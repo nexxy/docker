@@ -35,14 +35,14 @@ List containers
 	.. sourcecode:: http
 
 	   GET /containers/json?all=1&before=8dfafdbc3a40&size=1 HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/json
-	   
+
 	   [
 		{
 			"Id": "8dfafdbc3a40",
@@ -85,7 +85,7 @@ List containers
 			"SizeRootFs":0
 		}
 	   ]
- 
+
 	:query all: 1/True/true or 0/False/false, Show all containers. Only running containers are shown by default
 	:query limit: Show ``limit`` last created containers, include non-running ones.
 	:query since: Show only containers created since Id, include non-running ones.
@@ -133,7 +133,7 @@ Create a container
 		"WorkingDir":""
 
 	   }
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
@@ -145,7 +145,7 @@ Create a container
 		"Id":"e90e34656806"
 		"Warnings":[]
 	   }
-	
+
 	:jsonparam config: the container's configuration
 	:statuscode 201: no error
 	:statuscode 404: no such container
@@ -165,7 +165,7 @@ Inspect a container
 	.. sourcecode:: http
 
 	   GET /containers/4fa6e0f0c678/json HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
@@ -285,14 +285,14 @@ Inspect changes on a container's filesystem
 
 	   GET /containers/4fa6e0f0c678/changes HTTP/1.1
 
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/json
-	   
+
 	   [
 		{
 			"Path":"/dev",
@@ -326,14 +326,14 @@ Export a container
 
 	   GET /containers/4fa6e0f0c678/export HTTP/1.1
 
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/octet-stream
-	   
+
 	   {{ STREAM }}
 
 	:statuscode 200: no error
@@ -385,13 +385,13 @@ Stop a container
 	.. sourcecode:: http
 
 	   POST /containers/e90e34656806/stop?t=5 HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 204 OK
-	   	
+
 	:query t: number of seconds to wait before killing the container
 	:statuscode 204: no error
 	:statuscode 404: no such container
@@ -410,13 +410,13 @@ Restart a container
 	.. sourcecode:: http
 
 	   POST /containers/e90e34656806/restart?t=5 HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 204 OK
-	   	
+
 	:query t: number of seconds to wait before killing the container
 	:statuscode 204: no error
 	:statuscode 404: no such container
@@ -435,13 +435,13 @@ Kill a container
 	.. sourcecode:: http
 
 	   POST /containers/e90e34656806/kill HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
 
 	   HTTP/1.1 204 OK
-	   	
+
 	:statuscode 204: no error
 	:statuscode 404: no such container
 	:statuscode 500: server error
@@ -459,7 +459,7 @@ Attach to a container
 	.. sourcecode:: http
 
 	   POST /containers/16253994b7c4/attach?logs=1&stream=0&stdout=1 HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
@@ -468,7 +468,7 @@ Attach to a container
 	   Content-Type: application/vnd.docker.raw-stream
 
 	   {{ STREAM }}
-	   	
+
 	:query logs: 1/True/true or 0/False/false, return logs. Default false
 	:query stream: 1/True/true or 0/False/false, return stream. Default false
 	:query stdin: 1/True/true or 0/False/false, if stream=true, attach to stdin. Default false
@@ -492,7 +492,7 @@ Wait a container
 	.. sourcecode:: http
 
 	   POST /containers/16253994b7c4/wait HTTP/1.1
-	   
+
 	**Example response**:
 
 	.. sourcecode:: http
@@ -501,7 +501,7 @@ Wait a container
 	   Content-Type: application/json
 
 	   {"StatusCode":0}
-	   	
+
 	:statuscode 200: no error
 	:statuscode 404: no such container
 	:statuscode 500: server error
@@ -557,7 +557,7 @@ Copy files or folders from a container
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/octet-stream
-	   
+
 	   {{ STREAM }}
 
 	:statuscode 200: no error
@@ -587,7 +587,7 @@ List Images
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/json
-	   
+
 	   [
 		{
 			"Repository":"base",
@@ -638,7 +638,7 @@ List Images
 	   "9a33b36209ed" [label="9a33b36209ed\ntest",shape=box,fillcolor="paleturquoise",style="filled,rounded"];
 	   base [style=invisible]
 	   }
- 
+
 	:query all: 1/True/true or 0/False/false, Show all containers. Only running containers are shown by default
 	:statuscode 200: no error
 	:statuscode 400: bad parameter
@@ -680,7 +680,7 @@ Create an image
 
 
 Insert a file in an image
-************************
+*************************
 
 .. http:post:: /images/(name)/insert
 
@@ -842,7 +842,7 @@ Tag an image into a repository
         **Example request**:
 
         .. sourcecode:: http
-			
+
 	   POST /images/test/tag?repo=myrepo&force=0 HTTP/1.1
 
 	**Example response**:
@@ -865,8 +865,8 @@ Remove an image
 
 .. http:delete:: /images/(name)
 
-	Remove the image ``name`` from the filesystem 
-	
+	Remove the image ``name`` from the filesystem
+
 	**Example request**:
 
 	.. sourcecode:: http
@@ -898,7 +898,7 @@ Search images
 .. http:get:: /images/search
 
 	Search for an image in the docker index
-	
+
 	**Example request**:
 
         .. sourcecode:: http
@@ -911,7 +911,7 @@ Search images
 
 	   HTTP/1.1 200 OK
 	   Content-Type: application/json
-	   
+
 	   [
 		{
 			"Name":"cespare/sshd",
@@ -1010,7 +1010,7 @@ Display system-wide information
 .. http:get:: /info
 
 	Display system-wide information
-	
+
 	**Example request**:
 
         .. sourcecode:: http
